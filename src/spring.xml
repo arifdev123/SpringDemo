@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+   
+    <bean id="triangle" class="in.co.javacoder.Triangle"> 
+     <property name="pointA"	ref="zeroPoint" />
+     <property name="pointB"	ref="point2" />
+     <property name="pointC"	ref="point3" />
+    </bean>
+    
+    <bean id="zeroPoint" class="in.co.javacoder.Point">
+    	<property name="x" value="${pointA.x}"/>
+    	<property name="y" value="${pointA.y}"/>
+    </bean>
+
+    <bean id="point2" class="in.co.javacoder.Point">
+    	<property name="x" value="20"/>
+    	<property name="y" value="0"/>
+    </bean>
+
+    <bean id="point3" class="in.co.javacoder.Point">
+    	<property name="x" value="-20"/>
+    	<property name="y" value="0"/>
+    </bean>
+    
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    	<property name="locations" value="triangleCoordinatesConfig.properties"/>
+    </bean>
+    
+    <bean class ="in.co.javacoder.AppBeanFactoryPostProcessor" />
+       
+</beans>
+
+
+
+
+
